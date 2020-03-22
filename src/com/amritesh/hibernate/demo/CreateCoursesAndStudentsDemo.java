@@ -27,7 +27,22 @@ public class CreateCoursesAndStudentsDemo {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
 			
+			Course course1 = new Course("Sitar");
+			session.save(course1);
+						
+			Student student1 = new Student("John", "Doe", "john@abc.com");
+			Student student2 = new Student("Amritesh", "Chandan", "achandan1@yodlee.com");
+			Student student3 = new Student("Aman", "Raj", "aRaj@gmail.com");
 			
+			course1.addStudent(student1);
+			course1.addStudent(student2);
+			course1.addStudent(student3);
+			
+			session.save(student1);
+			session.save(student2);
+			session.save(student3);
+			
+			System.out.println(course1.getStudents());
 			
 			session.getTransaction().commit();
 		} catch (Exception e) {
