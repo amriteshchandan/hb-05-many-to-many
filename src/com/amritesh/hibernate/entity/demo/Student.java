@@ -1,5 +1,6 @@
 package com.amritesh.hibernate.entity.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -98,5 +99,11 @@ public class Student {
 		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 	
+	public void addCourse(Course course) {
+		if (courses == null)
+			courses = new ArrayList<Course>();
+		
+		courses.add(course);
+	}
 	
 }
