@@ -7,8 +7,10 @@ import org.hibernate.cfg.Configuration;
 import com.amritesh.hibernate.entity.demo.Course;
 import com.amritesh.hibernate.entity.demo.Instructor;
 import com.amritesh.hibernate.entity.demo.InstructorDetail;
+import com.amritesh.hibernate.entity.demo.Review;
+import com.amritesh.hibernate.entity.demo.Student;
 
-public class CreateCoursesDemo {
+public class CreateCoursesAndStudentsDemo {
 
 	public static void main(String[] args) {
 		
@@ -17,21 +19,15 @@ public class CreateCoursesDemo {
 										.addAnnotatedClass(Instructor.class)
 										.addAnnotatedClass(InstructorDetail.class)
 										.addAnnotatedClass(Course.class)
+										.addAnnotatedClass(Student.class)
+										.addAnnotatedClass(Review.class)
 										.buildSessionFactory();
 		Session session = null;
 		try {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
-			Instructor tempInstructor = session.get(Instructor.class, 2);
 			
-			Course tempCourse1 = new Course("ABC");
-			Course tempCourse2 = new Course("DEF");
 			
-			tempInstructor.addCourse(tempCourse1);
-			tempInstructor.addCourse(tempCourse2);
-			
-			session.save(tempCourse1);
-			session.save(tempCourse2);
 			
 			session.getTransaction().commit();
 		} catch (Exception e) {
