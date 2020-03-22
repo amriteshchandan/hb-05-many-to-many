@@ -10,7 +10,7 @@ import com.amritesh.hibernate.entity.demo.InstructorDetail;
 import com.amritesh.hibernate.entity.demo.Review;
 import com.amritesh.hibernate.entity.demo.Student;
 
-public class GetCoursesDemo {
+public class DeleteCourseWithoutDeletingStudentsDemo {
 
 	public static void main(String[] args) {
 		
@@ -28,9 +28,9 @@ public class GetCoursesDemo {
 			session = sessionFactory.getCurrentSession();
 			session.beginTransaction();
 			
-			Student student1 = session.get(Student.class, 1);
-			System.out.println(student1);
-			System.out.println(student1.getCourses());
+			Course course = session.get(Course.class, 12);
+			session.delete(course);
+			
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
